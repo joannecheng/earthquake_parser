@@ -2,10 +2,6 @@ require "csv"
 require "httparty"
 
 class ImportEarthquakes
-  def initialize(local = true)
-    @local = local
-  end
-
   def headers
     [
       "time", "latitude", "longitude", "depth",
@@ -18,14 +14,9 @@ class ImportEarthquakes
   end
 
   def week_earthquakes_data
-    if @local
-      f = File.open("all_week.csv", "r")
-      response = f.read
-      f.close()
-    else
-      url = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.csv"
-      response = HTTParty.get(url).body
-    end
+    # url = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.csv"
+    url = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv"
+    response = HTTParty.get(url).body
 
     rows = response.split("\n").map do |row|
       row.split(",")

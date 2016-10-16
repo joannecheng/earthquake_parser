@@ -3,35 +3,53 @@
   <head>
     <link rel="stylesheet" href="/css/pure-min.css"/>
 
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.18.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.18.0/mapbox-gl.css' rel='stylesheet' />
+
 <style>
 html, body {
   height: 100%;
+  width: 100%;
 }
 
 #list-container {
+  height: 100%;
+  width: 50%;
   background-color: red;
 }
 
 #map-container {
-  height: 100%;
-  background-color: steelblue;
-  display: table-cell;
-  overflow: hidden;
+  height: 100vh;
+  width: 50%;
+}
+
+#map {
+  height: 100vh;
 }
 </style>
+
   </head>
 
   <body>
     <div class="pure-g">
       <div class="pure-u-1-2" id="list-container">
-        <p>Half</p>
+        <p>djflksdjfksa</p>
       </div>
 
       <div class="pure-u-1-2" id="map-container">
-        <p>Half</p>
+        <div id="map">
+        </div>
       </div>
     </div>
 
-  </body>
+    <script>
+mapboxgl.accessToken = 'pk.eyJ1Ijoiam9hbm5lY2hlbmciLCJhIjoiYV9YSTdaZyJ9.tOevZpArPItdszzQl_GLJQ';
+var map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/streets-v8'
+});
+  </script>
 
+
+  </body>
 </html>
