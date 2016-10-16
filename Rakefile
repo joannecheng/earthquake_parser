@@ -7,7 +7,6 @@ ENV["KEEN_WRITE_KEY"] = "832afdd2d98d4290b5a76ac4a70a373d31c273f502b73999458398d
 ENV["KEEN_READ_KEY"] = "5de7f166da2e36f6c8617347a7a729cfda6d5413db8d88d7f696b61ddaa4fe1e5cdb7d019de9bb0ac846d91e83cdac01e973585d0fba43fadf92f06a695558b890665da824a0cf6a946ac09f5746c9102d228a1165323fdd0c52c92b80e78eca"
 
 task :import do
-  # Keen.delete(:earthquakes)
   importer = ImportEarthquakes.new()
   eqs = importer.week_earthquakes_data
 
@@ -26,7 +25,7 @@ task :import do
     body = {
       depth: eq[3].to_f,
       mag: eq[4].to_f,
-      magType: eq[5].to_f,
+      magType: eq[5],
       nst: eq[6].to_i,
       gap: eq[7].to_f,
       dmin: eq[8].to_f, # horiz dist - epicenter to nearest station
